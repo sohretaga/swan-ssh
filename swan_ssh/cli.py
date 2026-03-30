@@ -9,8 +9,8 @@ from . import git_manager
 from . import ssh
 from . import __version__
 
-# Name it "swan" so help text is "swan"
-app = typer.Typer(help="Swan SSH: Sync and manage SSH servers via Git")
+# Name it "swan" so help text is "swan". Disable default completion flags for a cleaner UI.
+app = typer.Typer(help="Swan SSH: Sync and manage SSH servers via Git", add_completion=False)
 console = Console()
 
 def check_initialized():

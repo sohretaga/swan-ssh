@@ -1,4 +1,9 @@
 """
 Swan SSH CLI tool
 """
-__version__ = "1.0.0"
+from importlib.metadata import version, PackageNotFoundError
+
+try:
+    __version__ = version("swan-ssh")
+except PackageNotFoundError:
+    __version__ = "unknown"
