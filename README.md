@@ -2,8 +2,6 @@
 
 A simple, fast, and beautiful CLI tool to manage and synchronize SSH connections seamlessly across all your devices using a private Git repository. Made with Python, Typer, and Rich.
 
-![CLI Flow UI Demo](https://raw.githubusercontent.com/sabahhub/swan-ssh/main/assets/demo.gif) *(Feel free to add your own screenshot here)*
-
 ## Installation
 
 The recommended way to install Swan SSH is via `pipx`. This ensures it's installed in an isolated environment without disturbing your system's Python packages.

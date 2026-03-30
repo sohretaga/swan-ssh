@@ -5,12 +5,17 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "swan-ssh"
 version = "1.0.0"
+authors = [
+  { name="Shohrat Aghazada" }
+]
 description = "A CLI tool to manage and sync SSH connections via Git"
 readme = "README.md"
 requires-python = ">=3.9"
+license = {text = "MIT"}
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: POSIX :: Linux",
+    "License :: OSI Approved :: MIT License",
 ]
 dependencies = [
     "typer[all]>=0.9.0",
