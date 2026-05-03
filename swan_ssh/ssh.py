@@ -1,5 +1,7 @@
 import pexpect
 import sys
+import signal
+import shutil
 from rich.console import Console
 
 console = Console()
@@ -13,6 +15,17 @@ def connect(ip: str, port: int, user: str, password: str):
     try:
         # Spawn the ssh process
         child = pexpect.spawn(cmd, encoding='utf-8')
+        
+        def sigwinch_passthrough(sig, data):
+            if not child.closed:
+                size = shutil.get_terminal_size()
+                child.setwinsize(size.lines, size.columns)
+                
+        # Set initial terminal size
+        sigwinch_passthrough(None, None)
+        
+        # Register the signal handler for terminal resizing
+        signal.signal(signal.SIGWINCH, sigwinch_passthrough)
         
         # We expect a password prompt. Wait up to 15 seconds.
         # This will match generic password prompts from ssh
