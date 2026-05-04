@@ -1,5 +1,8 @@
 # Swan SSH 🦢
 
+[![GitHub stars](https://img.shields.io/github/stars/sohretaga/swan-ssh?style=social)](https://github.com/sohretaga/swan-ssh)
+[![PyPI Downloads](https://static.pepy.tech/personalized-badge/swan-ssh?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/swan-ssh)
+
 A simple, fast, and beautiful CLI tool to manage and synchronize SSH connections seamlessly across all your devices using a private Git repository. Made with Python, Typer, and Rich.
 
 ## Installation
