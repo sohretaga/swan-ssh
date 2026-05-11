@@ -108,6 +108,37 @@ def connect_cmd(server_id: str):
     ssh.connect(server["ip"], server["port"], server["username"], server["password"])
 
 @app.command()
+def copy(
+    server_id: str = typer.Argument(..., help="The ID of the server"),
+    local_path: str = typer.Argument(..., help="Path on the local machine"),
+    remote_path: str = typer.Argument(..., help="Path on the remote server"),
+    recursive: bool = typer.Option(False, "--recursive", "-r", help="Copy directories recursively"),
+    progress: bool = typer.Option(False, "--progress", "-p", help="Show a rich progress bar"),
+    compress: bool = typer.Option(False, "--compress", "-c", help="Compress data during transfer"),
+    download: bool = typer.Option(False, "--download", "-d", help="Download from remote to local (reverses direction)")
+):
+    """Transfer files or directories to/from a server."""
+    check_initialized()
+    server = storage.get_server(server_id)
+    if not server:
+        if server is None:
+            console.print(f"[bold red]Server ID '{server_id}' not found.[/bold red]")
+        raise typer.Exit(1)
+        
+    ssh.copy(
+        server["ip"], 
+        server["port"], 
+        server["username"], 
+        server["password"], 
+        local_path, 
+        remote_path,
+        recursive=recursive,
+        show_progress=progress,
+        compress=compress,
+        download=download
+    )
+
+@app.command()
 def sync():
     """Pull the latest server configurations from the remote repository."""
     check_initialized()
