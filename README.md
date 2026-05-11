@@ -47,7 +47,20 @@ pipx install swan-ssh
    swan connect <id>
    ```
 
-5. **Sync from Another Device**:
+5. **Transfer Files (Copy)**:
+   Transfer files or directories to and from a server using its short `ID`.
+   ```bash
+   # Upload a local file to the server
+   swan copy <id> /local/path /remote/path
+   
+   # Download a file from the server (-d flag)
+   swan copy <id> /local/path /remote/path -d
+   
+   # Copy directories recursively with a progress bar (-r -p)
+   swan copy <id> /local/dir /remote/dir -r -p
+   ```
+
+6. **Sync from Another Device**:
    Installed Swan on your Macbook? Just run:
    ```bash
    swan init
@@ -56,12 +69,12 @@ pipx install swan-ssh
    # Ready to connect!
    ```
 
-6. **Remove a Server**:
+7. **Remove a Server**:
    ```bash
    swan rm <id>
    ```
 
-7. **Clean up & Uninstall**:
+8. **Clean up & Uninstall**:
    If you ever want to completely remove the configuration directory (`~/.swan-ssh`) before uninstalling the tool, use:
    ```bash
    swan destroy
